@@ -8,6 +8,26 @@
  * @property {string} name
  */
 
+class Item {
+  constructor(name) {
+    this.name = name;
+  }
+
+  get() {
+    return `${this.name}`
+  }
+
+  set() {
+    if (typeof(name) === 'string'){
+      this.name = name;
+    } else {
+      throw new TypeError('Name must be valid');
+    }
+  }
+}
+
+let Torch = new Item('Torch');
+
 
 /**
  * Class => Weapon(name, damage)
@@ -24,6 +44,7 @@
  * @param {number} damage   The weapon's damage.
  * @property {number} damage
  */
+
 
 
 /**
