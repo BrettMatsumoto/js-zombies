@@ -154,6 +154,16 @@ Player.prototype.checkPack = function () {
  * @return {boolean} true/false     Whether player was able to store item in pack.
  */
 
+Player.prototype.takeItem = function (item) {
+  if (this._pack.length < 3) {
+    console.log(Player.name + Player.item);
+    this._pack.push(item)
+    return true
+  } else {
+    console.log('pack is full')
+    return false;
+  }
+}
 
 /**
  * Player Class Method => discardItem(item)
