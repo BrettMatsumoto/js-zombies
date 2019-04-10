@@ -18,7 +18,7 @@ class Item {
   }
 
   set() {
-    if (typeof(name) === 'string'){
+    if (typeof (name) === 'string') {
       this.name = name;
     } else {
       throw new TypeError('Name must be valid');
@@ -45,7 +45,19 @@ let Torch = new Item('Torch');
  * @property {number} damage
  */
 
-
+class Weapon extends Item{
+  constructor(name, damage) {
+    super(name);
+    this.damage = damage;
+  }
+  set () {
+    if (typeof (name) === 'string'){
+      this.name = name;
+    } else {
+      throw new TypeError('Name must be valid');
+    }
+  }
+}
 
 /**
  * Weapon Extends Item Class
