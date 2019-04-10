@@ -33,7 +33,7 @@ class Item {
  * @property {number} damage
  */
 
-class Weapon extends Item{
+class Weapon extends Item {
   constructor(name, damage) {
     super(name);
     this.damage = damage;
@@ -64,7 +64,7 @@ class Weapon extends Item{
  */
 
 class Food extends Item {
-  constructor (name, energy){
+  constructor(name, energy) {
     super(name);
     this.energy = energy;
   }
@@ -99,8 +99,8 @@ class Food extends Item {
  * @property {method} getMaxHealth         Returns private variable `maxHealth`.
  */
 
-class Player{
-  constructor(name, health, strength, speed){
+class Player {
+  constructor(name, health, strength, speed) {
     this.name = name;
     this.health = health;
     this.strength = strength;
@@ -110,11 +110,11 @@ class Player{
     this.isAlive = true;
     this.equipped = false;
   }
-  getPack(){
+  getPack() {
     return this._pack;
   }
 
-  getMaxHealth(){
+  getMaxHealth() {
     return this._maxHealth;
   }
 
@@ -191,6 +191,17 @@ Player.prototype.takeItem = function (item) {
  * @return {boolean} true/false     Whether player was able to remove item from pack.
  */
 
+Player.prototype.discardItem = function (item) {
+  if (this._pack.includes(item) !== -1) {
+    this._pack.splice(this._pack.includes(item), 1);
+    console.log(item.name + Player.name);
+    console.log('item removed');
+    return true;
+  } else {
+    console.log('nothing was discarded');
+    return false;
+  }
+}
 
 /**
  * Player Class Method => equip(itemToEquip)
