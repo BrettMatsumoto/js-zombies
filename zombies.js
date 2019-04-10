@@ -118,9 +118,8 @@ class Player {
     return this._maxHealth;
   }
 
-}
-
-/**
+  
+  /**
  * Player Class Method => checkPack()
  * -----------------------------
  * Player checks the contents of their pack.
@@ -132,7 +131,7 @@ class Player {
  * @name checkPack
  */
 
-Player.prototype.checkPack = function () {
+checkPack = function () {
   console.log(Player.checkPack);
 }
 
@@ -154,7 +153,7 @@ Player.prototype.checkPack = function () {
  * @return {boolean} true/false     Whether player was able to store item in pack.
  */
 
-Player.prototype.takeItem = function (item) {
+takeItem = function (item) {
   if (this._pack.length < 3) {
     console.log(`${Player.name} got ${item.name}`);
     this._pack.push(item)
@@ -191,7 +190,7 @@ Player.prototype.takeItem = function (item) {
  * @return {boolean} true/false     Whether player was able to remove item from pack.
  */
 
-Player.prototype.discardItem = function (item) {
+discardItem = function (item) {
   let index = this._pack.indexOf(item);
   if (index === -1) {
     console.log(`${item.name} was not found`);
@@ -221,11 +220,11 @@ Player.prototype.discardItem = function (item) {
  * @param {Weapon} itemToEquip  The weapon item to equip.
  */
 
-Player.prototype.equip = function (item) {
-
+equip = function (item) {
+  
   let isWeapon = item instanceof Weapon;
   let index = this._pack.indexOf(item);
-
+  
   if (index !== -1) {
     if (isWeapon) {
       if (this.equipped === false) {
@@ -261,16 +260,16 @@ Player.prototype.equip = function (item) {
  * @param {Food} itemToEat  The food item to eat.
  */
 
-Player.prototype.eat = function (item) {
-
+eat = function (item) {
+  
   let isFood = item instanceof Food;
   let index = this._pack.indexOf(item);
-
+  
   if (isFood) {
     if (index !== -1) {
       this.discardItem(item);
-      this.health += this._maxHealth
-      if (this.health > this._maxHealth){
+      this.health += item.energy;
+      if (this.health > this._maxHealth) {
         this.health = this._maxHealth;
       }
     }
@@ -290,6 +289,12 @@ Player.prototype.eat = function (item) {
  * @param {Item/Weapon/Food} item   The item to use.
  */
 
+useItem = function (item){
+  if (item instanceof Weapon) {this.equip(item)};
+  if (item instanceof Food) {this.eat(item)};
+}
+
+
 
 /**
  * Player Class Method => equippedWith()
@@ -306,6 +311,7 @@ Player.prototype.eat = function (item) {
  */
 
 
+} // last brace line for player
 /**
  * Class => Zombie(health, strength, speed)
  * -----------------------------
