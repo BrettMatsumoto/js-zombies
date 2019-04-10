@@ -105,11 +105,19 @@ class Player{
     this.health = health;
     this.strength = strength;
     this.speed = speed;
-    this._pack;
+    this._pack = [];
     this._maxHealth = health;
     this.isAlive = true;
     this.equipped = false;
   }
+  getPack(){
+    return this._pack;
+  }
+
+  getMaxHealth(){
+    return this._maxHealth;
+  }
+
 }
 
 /**
@@ -124,6 +132,9 @@ class Player{
  * @name checkPack
  */
 
+Player.prototype.checkPack = function () {
+  console.log(Player.checkPack);
+}
 
 /**
  * Player Class Method => takeItem(item)
