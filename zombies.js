@@ -1,3 +1,4 @@
+'use strict';
 /**
  * Class => Item(name)
  * -----------------------------
@@ -12,21 +13,8 @@ class Item {
   constructor(name) {
     this.name = name;
   }
-
-  get() {
-    return `${this.name}`
-  }
-
-  set() {
-    if (typeof (name) === 'string') {
-      this.name = name;
-    } else {
-      throw new TypeError('Name must be valid');
-    }
-  }
 }
 
-let Torch = new Item('Torch');
 
 
 /**
@@ -74,6 +62,7 @@ class Weapon extends Item{
  * @param {number} energy     The energy the food provides.
  * @property {number} energy
  */
+
 class Food extends Item {
   constructor (name, energy){
     super(name);
@@ -110,6 +99,18 @@ class Food extends Item {
  * @property {method} getMaxHealth         Returns private variable `maxHealth`.
  */
 
+class Player{
+  constructor(name, health, strength, speed){
+    this.name = name;
+    this.health = health;
+    this.strength = strength;
+    this.speed = speed;
+    this._pack;
+    this._maxHealth = health;
+    this.isAlive = true;
+    this.equipped = false;
+  }
+}
 
 /**
  * Player Class Method => checkPack()
