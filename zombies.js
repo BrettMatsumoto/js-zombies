@@ -223,6 +223,26 @@ Player.prototype.discardItem = function (item) {
  * @param {Weapon} itemToEquip  The weapon item to equip.
  */
 
+Player.prototype.equip = function (item) {
+
+  let isWeapon = item instanceof Weapon;
+  let index = this._pack.indexOf(item);
+  console.log('packBefore', this._pack)
+
+  if (index !== -1 && isWeapon) {
+    if (this.equipped === false) {
+      this.equipped = item;
+      this.discardItem(item);
+    } else {
+      this.takeItem(inHand);
+      let inHand = this.equipped;
+      this.equipped = item;
+      this.discardItem(item);
+    }
+  }
+  console.log('packAfter', this._pack);
+  console.log('equiped', this.equipped)
+}
 
 /**
  * Player Class Method => eat(itemToEat)
@@ -289,7 +309,15 @@ Player.prototype.discardItem = function (item) {
  * @property {boolean} isAlive      Default value should be `true`.
  */
 
-
+class Zombie {
+  constructor(health, strength, speed) {
+    this.health = health;
+    this.strength = strength;
+    this.speed = speed;
+    this._maxHealth = health;
+    this.isAlive = true;
+  }
+}
 /**
  * Class => FastZombie(health, strength, speed)
  * -----------------------------
