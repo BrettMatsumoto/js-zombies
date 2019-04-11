@@ -105,13 +105,6 @@ function Player(name, health, strength, speed) {
 
   this.getPack = function () { return pack; }
   this.getMaxHealth = function () { return maxHealth; }
-  this.takeItem = function (item) {
-    if (pack.length < 3) {
-      pack.push(item);
-    } else {
-      console.log('pack is full')
-    }
-  }
 }
 
 /**
@@ -145,6 +138,13 @@ function Player(name, health, strength, speed) {
  * @return {boolean} true/false     Whether player was able to store item in pack.
  */
 
+Player.prototype.takeItem = function (item) {
+  if (this.getPack().length < 3) {
+    this.getPack().push(item);
+  } else {
+    console.log('pack is full')
+  }
+}
 
 /**
  * Player Class Method => discardItem(item)
@@ -172,6 +172,15 @@ function Player(name, health, strength, speed) {
  * @return {boolean} true/false     Whether player was able to remove item from pack.
  */
 
+// Player.prototype.discardItem = function (item) {
+//   let index = getPack().indexOf(item);
+//   if (index === -1) {
+//     console.log(`${item.name} was not found`);
+//   } else {
+//     pack.splice(index, 1);
+//     console.log(`${item.name} was removed from pack`)
+//   }
+// }
 
 /**
  * Player Class Method => equip(itemToEquip)
