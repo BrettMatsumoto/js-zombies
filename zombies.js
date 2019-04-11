@@ -296,8 +296,10 @@ Player.prototype.useItem = function (item) {
  */
 
  Player.prototype.equippedWith = function () {
-   if (this.Player.equipped === false) {
+   if (this.equipped === false) {
      return false;
+    } else {
+      return this.equipped.name;
     }
   }
 
