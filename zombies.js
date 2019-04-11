@@ -174,7 +174,7 @@ Player.prototype.takeItem = function (item) {
 
 Player.prototype.discardItem = function (item) {
   let index = this.getPack().indexOf(item);
-  
+
   if (index === -1) {
     console.log(`${item.name} was not found`);
     return false;
@@ -205,6 +205,25 @@ Player.prototype.discardItem = function (item) {
  * @param {Weapon} itemToEquip  The weapon item to equip.
  */
 
+Player.prototype.equip = function (itemToEquip) {
+  
+  let isWeapon = itemToEquip instanceof Weapon;
+  let index = this.getPack().indexOf(itemToEquip);
+
+  if (index !== -1) {
+    if (isWeapon) {
+      if (this.equipped === false){
+        this.discardItem(itemToEquip);
+        this.equipped = itemToEquip;
+      } else {
+        let currentEquiped = this.equipped;
+        this.discardItem(itemToEquip);
+        this.equipped = itemToEquip;
+        this.takeItem(currentEquiped);
+      }
+    }
+  }
+}
 
 /**
  * Player Class Method => eat(itemToEat)
@@ -225,6 +244,9 @@ Player.prototype.discardItem = function (item) {
  * @param {Food} itemToEat  The food item to eat.
  */
 
+//  Player.prototype.eat = function (itemToEat) {
+
+//  }
 
 /**
  * Player Class Method => useItem(item)
