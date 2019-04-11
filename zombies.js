@@ -119,9 +119,9 @@ function Player(name, health, strength, speed) {
  * @name checkPack
  */
 
- Player.prototype.checkPack = function () {
-   console.log(this.getPack())
- }
+Player.prototype.checkPack = function () {
+  console.log(this.getPack())
+}
 
 /**
  * Player Class Method => takeItem(item)
@@ -295,13 +295,13 @@ Player.prototype.useItem = function (item) {
  * @return {string/boolean}   Weapon name or false if nothing is equipped.
  */
 
- Player.prototype.equippedWith = function () {
-   if (this.equipped === false) {
-     return false;
-    } else {
-      return this.equipped.name;
-    }
+Player.prototype.equippedWith = function () {
+  if (this.equipped === false) {
+    return false;
+  } else {
+    return this.equipped.name;
   }
+}
 
 /**
  * Class => Zombie(health, strength, speed)
@@ -319,12 +319,12 @@ Player.prototype.useItem = function (item) {
  * @property {boolean} isAlive      Default value should be `true`.
  */
 
- function Zombie (health,strength,speed) {
-   this.health = health;
-   this.strength = strength;
-   this.speed = speed;
-   this.isAlive = true;
- }
+function Zombie(health, strength, speed) {
+  this.health = health;
+  this.strength = strength;
+  this.speed = speed;
+  this.isAlive = true;
+}
 
 /**
  * Class => FastZombie(health, strength, speed)
@@ -347,7 +347,11 @@ Player.prototype.useItem = function (item) {
  * -----------------------------
  */
 
+function FastZombie(health, strength, speed) {
+  Zombie.call(this, health, strength, speed);
+}
 
+FastZombie.prototype = Object.create(Zombie.prototype);
 
 /**
  * Class => StrongZombie(health, strength, speed)
