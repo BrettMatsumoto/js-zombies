@@ -103,8 +103,15 @@ function Player(name, health, strength, speed) {
   this.isAlive = true;
   this.equipped = false;
 
-  this.checkPack = function () {return pack;}
-  this.checkMaxHealth = function () {return maxHealth;}
+  this.getPack = function () { return pack; }
+  this.getMaxHealth = function () { return maxHealth; }
+  this.takeItem = function (item) {
+    if (pack.length < 3) {
+      pack.push(item);
+    } else {
+      console.log('pack is full')
+    }
+  }
 }
 
 /**
