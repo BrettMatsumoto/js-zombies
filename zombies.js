@@ -172,15 +172,18 @@ Player.prototype.takeItem = function (item) {
  * @return {boolean} true/false     Whether player was able to remove item from pack.
  */
 
-// Player.prototype.discardItem = function (item) {
-//   let index = getPack().indexOf(item);
-//   if (index === -1) {
-//     console.log(`${item.name} was not found`);
-//   } else {
-//     pack.splice(index, 1);
-//     console.log(`${item.name} was removed from pack`)
-//   }
-// }
+Player.prototype.discardItem = function (item) {
+  let index = this.getPack().indexOf(item);
+  
+  if (index === -1) {
+    console.log(`${item.name} was not found`);
+    return false;
+  } else {
+    this.getPack().splice(index, 1);
+    console.log(`${item.name} was removed from pack`);
+    return true;
+  }
+}
 
 /**
  * Player Class Method => equip(itemToEquip)
