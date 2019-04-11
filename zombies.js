@@ -119,6 +119,9 @@ function Player(name, health, strength, speed) {
  * @name checkPack
  */
 
+ Player.prototype.checkPack = function () {
+   console.log(this.getPack())
+ }
 
 /**
  * Player Class Method => takeItem(item)
@@ -292,6 +295,11 @@ Player.prototype.useItem = function (item) {
  * @return {string/boolean}   Weapon name or false if nothing is equipped.
  */
 
+ Player.prototype.equippedWith = function () {
+   if (this.Player.equipped === false) {
+     return false;
+    }
+  }
 
 /**
  * Class => Zombie(health, strength, speed)
