@@ -30,7 +30,6 @@ function Item(name) {
 
 function Weapon(name, damage) {
   Item.call(this, name);
-  this.name = name;
   this.damage = damage;
 }
 
@@ -65,8 +64,12 @@ Weapon.prototype = Object.create(Item.prototype);
  * -----------------------------
  */
 
+function Food(name,energy){
+  Item.call(this, name);
+  this.energy = energy;
+}
 
-
+Food.prototype = Object.create(Item.prototype);
 /**
  * Class => Player(name, health, strength, speed)
  * -----------------------------
