@@ -430,8 +430,11 @@ RangedZombie.prototype = Object.create(Zombie.prototype);
  * -----------------------------
  */
 
+function ExplodingZombie(health, strength, speed) {
+  Zombie.call(this, health, strength, speed);
+}
 
-
+ExplodingZombie.prototype = Object.create(Zombie.prototype);
 
 /**
  * Sample run.
