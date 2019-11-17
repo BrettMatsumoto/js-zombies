@@ -98,6 +98,26 @@
  * @property {method} getMaxHealth         Returns private variable `maxHealth`.
  */
 
+ class Player {
+   constructor(name, health, strength, speed) {
+     this.name = name;
+     this.health = health;
+     this.strength = strength;
+     this.speed = speed; 
+     this._pack = []; //the "_" makes the property private
+     this._maxHealth = health; //the "_" makes the property private
+     this.isAlive = true;
+     this.equipped = false;
+   }
+
+   getPack() {
+     return this._pack;
+   }
+
+   getMaxHealth() {
+     return this._maxHealth
+   }
+ }
 
 /**
  * Player Class Method => checkPack()
