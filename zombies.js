@@ -32,18 +32,17 @@
  * @property {number} damage
  */
 
- class Weapon extends Item {
-   constructor(name, damage) {
-     super(name);
-     this.damage = damage;
-   }
- }
-
 /**
  * Weapon Extends Item Class
  * -----------------------------
  */
 
+class Weapon extends Item {
+  constructor(name, damage) {
+    super(name);
+    this.damage = damage;
+  }
+}
 
 
 /**
@@ -104,8 +103,8 @@
      this.health = health;
      this.strength = strength;
      this.speed = speed; 
-     this._pack = []; //the "_" makes the property private
-     this._maxHealth = health; //the "_" makes the property private
+     this._pack = []; //the "_" denotes the property is private
+     this._maxHealth = health; //the "_" denotes the property is private
      this.isAlive = true;
      this.equipped = false;
    }
@@ -131,6 +130,9 @@
  * @name checkPack
  */
 
+ Player.prototype.checkPack = () => {
+   console.log(Player.getPack);
+ }
 
 /**
  * Player Class Method => takeItem(item)
@@ -150,6 +152,16 @@
  * @return {boolean} true/false     Whether player was able to store item in pack.
  */
 
+Player.prototype.takeItem = function (item) {
+  if (this._pack.length < 3) {
+    console.log(`${Player.name} got ${item.name}`);
+    this._pack.push(item)
+    return true
+  } else {
+    console.log('pack is full')
+    return false;
+  }
+}
 
 /**
  * Player Class Method => discardItem(item)
