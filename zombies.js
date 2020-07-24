@@ -8,6 +8,11 @@
  * @property {string} name
  */
 
+class Item {
+  constructor(name) {
+    this.name = name;
+  }
+}
 
 /**
  * Class => Weapon(name, damage)
@@ -25,6 +30,12 @@
  * @property {number} damage
  */
 
+class Weapon extends Item {
+  constructor(name, damage) {
+    super(name);
+    this.damage = damage;
+  }
+}
 
 /**
  * Weapon Extends Item Class
@@ -55,7 +66,12 @@
  * -----------------------------
  */
 
-
+class Food extends Item {
+  constructor(name, energy) {
+    super(name);
+    this.energy = energy;
+  }
+}
 
 /**
  * Class => Player(name, health, strength, speed)
@@ -111,7 +127,6 @@
  * @return {boolean} true/false     Whether player was able to store item in pack.
  */
 
-
 /**
  * Player Class Method => discardItem(item)
  * -----------------------------
@@ -138,7 +153,6 @@
  * @return {boolean} true/false     Whether player was able to remove item from pack.
  */
 
-
 /**
  * Player Class Method => equip(itemToEquip)
  * -----------------------------
@@ -159,6 +173,58 @@
  * @param {Weapon} itemToEquip  The weapon item to equip.
  */
 
+class Player {
+  constructor(name, health, strength, speed) {
+    this.name = name;
+    this.health = health;
+    this.strength = strength;
+    this.speed = speed;
+    this._pack = [];
+    this._maxHealth = health;
+    this.isAlive = true;
+    this.equipped = false;
+  }
+  getPack() {
+    return this._pack;
+  }
+  getMaxHealth() {
+    return this._maxHealth;
+  }
+  takeItem(item) {
+    if (this._pack.length < 3) {
+      console.log(`${Player} got ${this.item}`);
+      this._pack.push(item);
+      return true;
+    } else {
+      console.log(`${Player}'s pack is full.`)
+      return false;
+    }
+  }
+  discardItem(item) {
+    let itemIndex = this._pack.indexOf(item);
+    if (itemIndex === -1) {
+      console.log(`${item} was not found in ${Player}'s pack.`);
+    } else {
+      this._pack.splice(this._pack.indexOf(item), 1);
+      console.log(`${item} was removed from ${Player}'s pack.`);
+      return true;
+    }
+  }
+  checkPack() {
+    console.log(this._pack);
+  }
+  equip(itemToEquip) {
+    let isWeapon = itemToEquip instanceof Weapon;
+    let index = this._pack.indexOf(itemToEquip);
+
+    if (index !== -1) {
+      if (isWeapon) {
+        if (this.equipped === false) {
+          this.discardItem(item)
+        }
+      }
+    }
+  }
 
 /**
  * Player Class Method => eat(itemToEat)
